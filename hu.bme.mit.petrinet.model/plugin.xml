@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated PetrinetModel -->
+      <package
+            uri="http://petrinetmodel/1.0"
+            class="hu.bme.mit.petrinet.model.petrinetmodel.PetrinetmodelPackage"
+            genModel="model/PetrinetModel.genmodel"/>
+   </extension>
+
+</plugin>
