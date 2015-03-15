@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-public class LoadModel {
+public class TransitionFireTest {
 	public static void main(String[] args) throws IOException {
 		PetrinetmodelPackage.eINSTANCE.eClass();
 
@@ -49,6 +49,7 @@ public class LoadModel {
 		}
 		System.out.println("\n");
 		pn.fireTransactionsByPriority();
+		System.out.println("transitions fired");
 		i--;
 		}
 		
