@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinetmodel:Petrinet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:petrinetmodel="http://petrinetmodel/1.0">
+  <transitions id="7">
+    <out in="3"/>
+  </transitions>
+  <transitions id="8">
+    <out in="4"/>
+  </transitions>
+  <transitions id="9">
+    <out in="5"/>
+    <out in="6"/>
+  </transitions>
+  <transitions id="10">
+    <out in="2"/>
+  </transitions>
+  <places token="2" id="1">
+    <out in="7"/>
+  </places>
+  <places token="1" id="2">
+    <out in="7"/>
+  </places>
+  <places id="3">
+    <out in="8"/>
+  </places>
+  <places id="4">
+    <out in="9"/>
+  </places>
+  <places id="5">
+    <out in="10"/>
+  </places>
+  <places id="6"/>
+</petrinetmodel:Petrinet>

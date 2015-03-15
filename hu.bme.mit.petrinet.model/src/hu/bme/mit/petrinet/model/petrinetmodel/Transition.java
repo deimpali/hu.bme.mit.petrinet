@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link hu.bme.mit.petrinet.model.petrinetmodel.Transition#getToken <em>Token</em>}</li>
  *   <li>{@link hu.bme.mit.petrinet.model.petrinetmodel.Transition#getOut <em>Out</em>}</li>
  *   <li>{@link hu.bme.mit.petrinet.model.petrinetmodel.Transition#getId <em>Id</em>}</li>
+ *   <li>{@link hu.bme.mit.petrinet.model.petrinetmodel.Transition#getPriority <em>Priority</em>}</li>
+ *   <li>{@link hu.bme.mit.petrinet.model.petrinetmodel.Transition#getInputPlaces <em>Input Places</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,7 +80,7 @@ public interface Transition extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(int)
 	 * @see hu.bme.mit.petrinet.model.petrinetmodel.PetrinetmodelPackage#getTransition_Id()
-	 * @model required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	int getId();
@@ -92,5 +94,71 @@ public interface Transition extends EObject {
 	 * @generated
 	 */
 	void setId(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Priority</em>' attribute.
+	 * @see #setPriority(int)
+	 * @see hu.bme.mit.petrinet.model.petrinetmodel.PetrinetmodelPackage#getTransition_Priority()
+	 * @model required="true"
+	 * @generated
+	 */
+	int getPriority();
+
+	/**
+	 * Sets the value of the '{@link hu.bme.mit.petrinet.model.petrinetmodel.Transition#getPriority <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Priority</em>' attribute.
+	 * @see #getPriority()
+	 * @generated
+	 */
+	void setPriority(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Input Places</b></em>' reference list.
+	 * The list contents are of type {@link hu.bme.mit.petrinet.model.petrinetmodel.Place}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input Places</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input Places</em>' reference list.
+	 * @see hu.bme.mit.petrinet.model.petrinetmodel.PetrinetmodelPackage#getTransition_InputPlaces()
+	 * @model
+	 * @generated
+	 */
+	EList<Place> getInputPlaces();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean prepare();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void fire();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addInputPlace(Place p);
 
 } // Transition

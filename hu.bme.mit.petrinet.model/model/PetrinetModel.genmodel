@@ -10,16 +10,29 @@
     <genClasses ecoreClass="PetrinetModel.ecore#//Petrinet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PetrinetModel.ecore#//Petrinet/transitions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PetrinetModel.ecore#//Petrinet/places"/>
+      <genOperations ecoreOperation="PetrinetModel.ecore#//Petrinet/fireTransactionsByPriority"/>
+      <genOperations ecoreOperation="PetrinetModel.ecore#//Petrinet/init"/>
     </genClasses>
     <genClasses ecoreClass="PetrinetModel.ecore#//Transition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetrinetModel.ecore#//Transition/token"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PetrinetModel.ecore#//Transition/out"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetrinetModel.ecore#//Transition/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetrinetModel.ecore#//Transition/priority"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetrinetModel.ecore#//Transition/inputPlaces"/>
+      <genOperations ecoreOperation="PetrinetModel.ecore#//Transition/prepare"/>
+      <genOperations ecoreOperation="PetrinetModel.ecore#//Transition/fire"/>
+      <genOperations ecoreOperation="PetrinetModel.ecore#//Transition/addInputPlace">
+        <genParameters ecoreParameter="PetrinetModel.ecore#//Transition/addInputPlace/p"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="PetrinetModel.ecore#//Place">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetrinetModel.ecore#//Place/token"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PetrinetModel.ecore#//Place/out"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetrinetModel.ecore#//Place/id"/>
+      <genOperations ecoreOperation="PetrinetModel.ecore#//Place/addToken"/>
+      <genOperations ecoreOperation="PetrinetModel.ecore#//Place/hasToken"/>
+      <genOperations ecoreOperation="PetrinetModel.ecore#//Place/removeToken"/>
+      <genOperations ecoreOperation="PetrinetModel.ecore#//Place/init"/>
     </genClasses>
     <genClasses ecoreClass="PetrinetModel.ecore#//EdgeToPlace">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetrinetModel.ecore#//EdgeToPlace/in"/>

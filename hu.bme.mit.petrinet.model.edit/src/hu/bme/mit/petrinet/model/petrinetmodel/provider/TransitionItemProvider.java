@@ -65,6 +65,8 @@ public class TransitionItemProvider
 
 			addTokenPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
+			addPriorityPropertyDescriptor(object);
+			addInputPlacesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -109,6 +111,50 @@ public class TransitionItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Priority feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPriorityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Transition_priority_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_priority_feature", "_UI_Transition_type"),
+				 PetrinetmodelPackage.Literals.TRANSITION__PRIORITY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Input Places feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInputPlacesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Transition_inputPlaces_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_inputPlaces_feature", "_UI_Transition_type"),
+				 PetrinetmodelPackage.Literals.TRANSITION__INPUT_PLACES,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -181,6 +227,7 @@ public class TransitionItemProvider
 		switch (notification.getFeatureID(Transition.class)) {
 			case PetrinetmodelPackage.TRANSITION__TOKEN:
 			case PetrinetmodelPackage.TRANSITION__ID:
+			case PetrinetmodelPackage.TRANSITION__PRIORITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case PetrinetmodelPackage.TRANSITION__OUT:

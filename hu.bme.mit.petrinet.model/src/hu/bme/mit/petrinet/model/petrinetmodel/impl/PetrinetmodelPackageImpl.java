@@ -13,6 +13,7 @@ import hu.bme.mit.petrinet.model.petrinetmodel.Transition;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -160,6 +161,24 @@ public class PetrinetmodelPackageImpl extends EPackageImpl implements Petrinetmo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getPetrinet__FireTransactionsByPriority() {
+		return petrinetEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPetrinet__Init() {
+		return petrinetEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTransition() {
 		return transitionEClass;
 	}
@@ -196,6 +215,51 @@ public class PetrinetmodelPackageImpl extends EPackageImpl implements Petrinetmo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTransition_Priority() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransition_InputPlaces() {
+		return (EReference)transitionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTransition__Prepare() {
+		return transitionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTransition__Fire() {
+		return transitionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTransition__AddInputPlace__Place() {
+		return transitionEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPlace() {
 		return placeEClass;
 	}
@@ -225,6 +289,42 @@ public class PetrinetmodelPackageImpl extends EPackageImpl implements Petrinetmo
 	 */
 	public EAttribute getPlace_Id() {
 		return (EAttribute)placeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPlace__AddToken() {
+		return placeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPlace__HasToken() {
+		return placeEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPlace__RemoveToken() {
+		return placeEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPlace__Init() {
+		return placeEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -312,16 +412,27 @@ public class PetrinetmodelPackageImpl extends EPackageImpl implements Petrinetmo
 		petrinetEClass = createEClass(PETRINET);
 		createEReference(petrinetEClass, PETRINET__TRANSITIONS);
 		createEReference(petrinetEClass, PETRINET__PLACES);
+		createEOperation(petrinetEClass, PETRINET___FIRE_TRANSACTIONS_BY_PRIORITY);
+		createEOperation(petrinetEClass, PETRINET___INIT);
 
 		transitionEClass = createEClass(TRANSITION);
 		createEAttribute(transitionEClass, TRANSITION__TOKEN);
 		createEReference(transitionEClass, TRANSITION__OUT);
 		createEAttribute(transitionEClass, TRANSITION__ID);
+		createEAttribute(transitionEClass, TRANSITION__PRIORITY);
+		createEReference(transitionEClass, TRANSITION__INPUT_PLACES);
+		createEOperation(transitionEClass, TRANSITION___PREPARE);
+		createEOperation(transitionEClass, TRANSITION___FIRE);
+		createEOperation(transitionEClass, TRANSITION___ADD_INPUT_PLACE__PLACE);
 
 		placeEClass = createEClass(PLACE);
 		createEAttribute(placeEClass, PLACE__TOKEN);
 		createEReference(placeEClass, PLACE__OUT);
 		createEAttribute(placeEClass, PLACE__ID);
+		createEOperation(placeEClass, PLACE___ADD_TOKEN);
+		createEOperation(placeEClass, PLACE___HAS_TOKEN);
+		createEOperation(placeEClass, PLACE___REMOVE_TOKEN);
+		createEOperation(placeEClass, PLACE___INIT);
 
 		edgeToPlaceEClass = createEClass(EDGE_TO_PLACE);
 		createEReference(edgeToPlaceEClass, EDGE_TO_PLACE__IN);
@@ -369,15 +480,36 @@ public class PetrinetmodelPackageImpl extends EPackageImpl implements Petrinetmo
 		initEReference(getPetrinet_Transitions(), this.getTransition(), null, "transitions", null, 0, -1, Petrinet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPetrinet_Places(), this.getPlace(), null, "places", null, 0, -1, Petrinet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getPetrinet__FireTransactionsByPriority(), null, "fireTransactionsByPriority", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getPetrinet__Init(), null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransition_Token(), ecorePackage.getEInt(), "token", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransition_Out(), this.getEdgeToPlace(), null, "out", null, 1, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransition_Id(), ecorePackage.getEInt(), "id", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Id(), ecorePackage.getEInt(), "id", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Priority(), ecorePackage.getEInt(), "priority", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_InputPlaces(), this.getPlace(), null, "inputPlaces", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getTransition__Prepare(), ecorePackage.getEBoolean(), "prepare", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTransition__Fire(), null, "fire", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		EOperation op = initEOperation(getTransition__AddInputPlace__Place(), null, "addInputPlace", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getPlace(), "p", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPlace_Token(), ecorePackage.getEInt(), "token", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_Out(), this.getEdgeToTransaction(), null, "out", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlace_Id(), ecorePackage.getEInt(), "id", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlace_Id(), ecorePackage.getEInt(), "id", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getPlace__AddToken(), null, "addToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getPlace__HasToken(), ecorePackage.getEBoolean(), "hasToken", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getPlace__RemoveToken(), null, "removeToken", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getPlace__Init(), null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(edgeToPlaceEClass, EdgeToPlace.class, "EdgeToPlace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEdgeToPlace_In(), this.getPlace(), null, "in", null, 1, 1, EdgeToPlace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

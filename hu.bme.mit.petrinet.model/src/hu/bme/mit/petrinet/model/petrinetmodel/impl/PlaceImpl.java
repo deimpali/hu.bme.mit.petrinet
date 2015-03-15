@@ -5,6 +5,7 @@ package hu.bme.mit.petrinet.model.petrinetmodel.impl;
 import hu.bme.mit.petrinet.model.petrinetmodel.EdgeToTransaction;
 import hu.bme.mit.petrinet.model.petrinetmodel.PetrinetmodelPackage;
 import hu.bme.mit.petrinet.model.petrinetmodel.Place;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -158,6 +159,41 @@ public class PlaceImpl extends MinimalEObjectImpl.Container implements Place {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public void addToken() {
+		++token;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public boolean hasToken() {
+		if (token<1) return false;
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void removeToken() {
+		if (hasToken()) token--; 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void init() {
+		for (EdgeToTransaction etp : getOut()){
+			etp.getIn().addInputPlace(this);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -247,6 +283,29 @@ public class PlaceImpl extends MinimalEObjectImpl.Container implements Place {
 				return id != ID_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case PetrinetmodelPackage.PLACE___ADD_TOKEN:
+				addToken();
+				return null;
+			case PetrinetmodelPackage.PLACE___HAS_TOKEN:
+				return hasToken();
+			case PetrinetmodelPackage.PLACE___REMOVE_TOKEN:
+				removeToken();
+				return null;
+			case PetrinetmodelPackage.PLACE___INIT:
+				init();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

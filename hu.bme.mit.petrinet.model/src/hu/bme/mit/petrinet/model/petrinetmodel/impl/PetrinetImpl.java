@@ -7,17 +7,16 @@ import hu.bme.mit.petrinet.model.petrinetmodel.PetrinetmodelPackage;
 import hu.bme.mit.petrinet.model.petrinetmodel.Place;
 import hu.bme.mit.petrinet.model.petrinetmodel.Transition;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -97,6 +96,32 @@ public class PetrinetImpl extends MinimalEObjectImpl.Container implements Petrin
 			places = new EObjectContainmentEList<Place>(Place.class, this, PetrinetmodelPackage.PETRINET__PLACES);
 		}
 		return places;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void fireTransactionsByPriority() {
+		List<Transition> tmp = new ArrayList<Transition>();
+		for (Transition t  : transitions){
+			if(t.prepare()){
+				tmp.add(t);
+			}
+		}
+		for(Transition t : tmp){
+			t.fire();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void init() {
+		for (Place p : getPlaces()){
+			p.init();
+		}
 	}
 
 	/**
@@ -184,6 +209,24 @@ public class PetrinetImpl extends MinimalEObjectImpl.Container implements Petrin
 				return places != null && !places.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case PetrinetmodelPackage.PETRINET___FIRE_TRANSACTIONS_BY_PRIORITY:
+				fireTransactionsByPriority();
+				return null;
+			case PetrinetmodelPackage.PETRINET___INIT:
+				init();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //PetrinetImpl

@@ -1,4 +1,4 @@
-package hu.bme.mit.petrinet.persistance.test;
+package hu.bme.mit.petrinet.fire.test;
 
 
 import hu.bme.mit.petrinet.model.petrinetmodel.Petrinet;
@@ -32,24 +32,26 @@ public class LoadModel {
 		// Get the first model element and cast it to the right type, in my
 		// example everything is hierarchical included in this first node
 		
+//		Petrinet pn = (Petrinet) (resource.getContents().get(0));
+//		for(Place places: pn.getPlaces()) {
+//			System.out.println(places.getToken());
+//		}
+//		pn.getTransitions().
+//		pn.getPlaces().get(0).
+		
+		
+		int i=10;
+		while(i >= 0){
 		Petrinet pn = (Petrinet) (resource.getContents().get(0));
+		pn.init();
 		for(Place places: pn.getPlaces()) {
-			System.out.println(places.getToken());
+			System.out.println("Place " + places.getId() +" Token: " + places.getToken());
+		}
+		System.out.println("\n");
+		pn.fireTransactionsByPriority();
+		i--;
 		}
 		
-		
-//		int i=10;
-//		while(i >= 0){
-//		Petrinet pn = (Petrinet) (resource.getContents().get(0));
-//		pn.init();
-//		for(Place places: pn.getPlaces()) {
-//			System.out.println("Place " + places.getId() +" Token: " + places.getToken());
-//		}
-//		System.out.println("\n");
-//		pn.fireTransactionsByPriority();
-//		i--;
-//		}
-		
-		resource.save(Collections.EMPTY_MAP);
+//		resource.save(Collections.EMPTY_MAP);
 	}
 }

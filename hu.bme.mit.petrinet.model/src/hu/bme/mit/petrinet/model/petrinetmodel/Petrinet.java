@@ -56,4 +56,20 @@ public interface Petrinet extends EObject {
 	 */
 	EList<Place> getPlaces();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void fireTransactionsByPriority();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void init();
+
 } // Petrinet
